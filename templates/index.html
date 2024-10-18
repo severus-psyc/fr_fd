@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            display: none;
+        }
+
+        .tab-button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab-button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            cursor: pointer;
+        }
+
+        button.submit {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button.submit:hover {
+            background-color: #0056b3;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .tab-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Face Recognition Upload</h1>
+    <div>
+        <button class="tab-button" onclick="openTab('presetTab')">Upload Preset Photos</button>
+        <button class="tab-button" onclick="openTab('targetTab')">Upload Target Photo</button>
+    </div>
+    
+    <div class="tab-container">
+        <div id="presetTab" class="tab active">
+            <form action="/upload_preset" method="POST" enctype="multipart/form-data">
+                <label for="preset">Select Preset Photos:</label>
+                <input type="file" name="preset" id="preset" accept="image/*" multiple required>
+                <button type="submit" class="submit">Upload Preset Photos</button>
+            </form>
+        </div>
+        
+        <div id="targetTab" class="tab">
+            <form action="/upload_target" method="POST" enctype="multipart/form-data">
+                <label for="target">Select Target Photo:</label>
+                <input type="file" name="target" id="target" accept="image/*" required>
+                <button type="submit" class="submit">Upload Target Photo</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(tabId) {
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>

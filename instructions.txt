@@ -1,0 +1,14 @@
+pip3 install requirements.txt
+
+
+after installing the deepface module numpy will be used form outdated version, to fetch and modulkate the best verison kindly follow below steps..
+
+uninstall deepface ---and install specific verison(below  are the commmands)
+
+pip uninstall opencv-python-headless deepface
+pip install opencv-python-headless deepface
+
+uninstall numpy and install specific verison(below  are the commmands)
+
+pip uninstall numpy
+pip install numpy==1.24.3
